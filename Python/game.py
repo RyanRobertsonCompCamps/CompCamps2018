@@ -7,21 +7,21 @@ from mit import MIT
 
 class Game():
 	def __init__(self):
-		self.background = pygame.image.load("images/eggs.png")
+		self.background = pygame.image.load("images/egg.jpg")
 		self.enemy = None
 		self.mits = [
 		MIT("R"),
-		MIT("Garfield")
-		MIT("Soup")
-		MIT("Cosmic Egg")
-		MIT("Cholesterol")
-		MIT("Shigeru Miyamoto")
-		MIT("Business man")
+		MIT("Garfield"),
+		MIT("Soup"),
+		MIT("Cosmic Egg"),
+		MIT("Cholesterol"),
+		MIT("Shigeru Miyamoto"),
+		MIT("Business man"),
 		MIT("Vladimir Putin")
 		]
 		random.shuffle(self.mits)
 
-		self.font = pygame.font.SysFont('Comic Sans MS', 30)
+		self.font = pygame.font.SysFont('Comic Sans MS', 20)
 
 		self.buttons = [
 
@@ -67,6 +67,8 @@ class Game():
 								if self.enemy.isAlive():
 									self.enemy.health -= self.enemy.damage
 									if self.enemy.health < 0:
+										self.enemy = None
+									elif self.enemy.health == 0:
 										self.enemy = None
 								elif button.id == "flee":
 									caught = random.randint(1,5) == 1
