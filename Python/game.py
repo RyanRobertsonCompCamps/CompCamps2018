@@ -4,13 +4,20 @@ from settings import Settings
 from button import Button
 from mit import MIT
 
+
 class Game():
 	def __init__(self):
-		self.background = pygame.image.load("images/egg.png")
+		self.background = pygame.image.load("images/eggs.png")
 		self.enemy = None
 		self.mits = [
 		MIT("R"),
 		MIT("Garfield")
+		MIT("Soup")
+		MIT("Cosmic Egg")
+		MIT("Cholesterol")
+		MIT("Shigeru Miyamoto")
+		MIT("Business man")
+		MIT("Vladimir Putin")
 		]
 		random.shuffle(self.mits)
 
@@ -18,18 +25,19 @@ class Game():
 
 		self.buttons = [
 
-			Button(0, Settings.height - 100, 100, 100, "Fight"),
-			Button(Settings.width - 100, Settings.height - 100, 100, 100, "Flee"),
+			Button(0, Settings.height - 100, 100, 100, "fight", "Fight"),
+			Button(Settings.width - 100, Settings.height - 100, 100, 100, "flee", "Flee"),
 		]
 
 	def loop(self, screen):
 		clock = pygame.time.Clock()
 
-		if not self.enemy:
-			self.enemy = self.mits.pop()
-			self.text = self.font.render(self.enemy.name, False, (0, 0, 0))
-
 		while True:
+
+			if not self.enemy:
+				self.enemy = self.mits.pop()
+				self.text = self.font.render(self.enemy.name, False, (0, 0, 0))
+
 			delta_t = clock.tick(Settings.frameRate)
 
 			for event in pygame.event.get():
@@ -49,5 +57,26 @@ class Game():
 				screen.blit(button.text, (button.x, button.y))
 			pygame.display.flip()
 
+			for event in pygame.event.get():
+				if event.type == pygame.MOUSEBUTTONDOWN:
+					x, y = event.pos
+					for button in self.buttons:
+						if button.isClicked(x, y):
+							if button.id == "fight":
+								damage = self.attack()
+								if self.enemy.isAlive():
+									self.enemy.health -= self.enemy.damage
+									if self.enemy.health < 0:
+										self.enemy = None
+								elif button.id == "flee":
+									caught = random.randint(1,5) == 1
+									if not caught:
+										print("Your score was {}".format(score))
+										sys.exit(0)
+									else:
+										print("You failed to flee!")
+
+	def attack(self):
+		return random.randint(1, 10)
 	def quit(self):
 		pass
