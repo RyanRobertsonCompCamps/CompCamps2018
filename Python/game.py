@@ -21,14 +21,13 @@ class Game():
 		]
 		random.shuffle(self.mits)
 
-		self.font = pygame.font.SysFont('Comic Sans MS', 20)
+		self.font = pygame.font.SysFont('Comic Sans MS', 17)
 
 		self.buttons = [
 
 			Button(0, Settings.height - 100, 100, 100, "fight", "Fight"),
 			Button(Settings.width - 100, Settings.height - 100, 100, 100, "flee", "Flee"),
 		]
-
 	def loop(self, screen):
 		clock = pygame.time.Clock()
 
@@ -48,7 +47,7 @@ class Game():
 			screen.blit(self.background, (0, 0))
 
 			screen.blit(self.enemy.img, (Settings.width - 150, 0))
-			pygame.draw.rect(screen, (0, 0, 0), (Settings.width - 150, 150, 100, 10))
+			pygame.draw.rect(screen, (255, 0, 0), (Settings.width - 150, 150, 100, 10))
 			pygame.draw.rect(screen, (0, 255, 0), (Settings.width - 150, 150,(self.enemy.health / 20) * 100, 10))
 			screen.blit(self.text, (Settings.width -150, 100))
 
@@ -73,8 +72,7 @@ class Game():
 								elif button.id == "flee":
 									caught = random.randint(1,5) == 1
 									if not caught:
-										print("Your score was {}".format(score))
-										sys.exit(0)
+										sys.quit(0)
 									else:
 										print("You failed to flee!")
 
