@@ -48,7 +48,7 @@ class Game():
 			screen.blit(self.background, (0, 0))
 
 			screen.blit(self.enemy.img, (Settings.width - 150, 0))
-			pygame.draw.rect(screen, (0, 0, 0), (Settings.width - 150, 150, 100, 10))
+			pygame.draw.rect(screen, (255, 0, 0), (Settings.width - 150, 150, 100, 10))
 			pygame.draw.rect(screen, (0, 255, 0), (Settings.width - 150, 150,(self.enemy.health / 20) * 100, 10))
 			screen.blit(self.text, (Settings.width -150, 100))
 
@@ -73,8 +73,7 @@ class Game():
 								elif button.id == "flee":
 									caught = random.randint(1,5) == 1
 									if not caught:
-										print("Your score was {}".format(score))
-										sys.exit(0)
+										sys.quit(0)
 									else:
 										print("You failed to flee!")
 

@@ -7,7 +7,7 @@ class MIT:
         self.img = pygame.image.load(self.image)
         self.img = pygame.transform.scale(self.img, (100, 100))
         self.health = 20
-        self.damage = random.randint(0, 10)
+        self.damage = random.randint(4, 10)
 
     def isAlive(self):
         return self.health > 0
