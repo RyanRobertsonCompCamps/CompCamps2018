@@ -8,12 +8,31 @@
   to{opacity: 1;}
 }
 
+
+
 .R{
   animation-name: E;
   animation-duration: 5s;
   -webkit-animation-name: E;
   -webkit-animation-duration: 5s;
   border-radius: 50%;
+}
+
+
+@keyframes F {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+
+@-webkit-keyframes F {
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+.N{
+  animation-name: F;
+  animation-duration: 30s;
+  -webkit-animation-name: F;
+  -webkit-animation-duration: 30s;
 }
 
 
