@@ -14,3 +14,4 @@ class MIT:
 
     def isDead(self):
         return self.health < 0
+        return self.health == 0
