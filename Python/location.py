@@ -1,7 +1,7 @@
-import random, enemy
+import random, enemy, cultist, marblecolossus, voidentity
 
 descriptions = ["a Room of"]
-location_types = ["Marble"]
+location_types = ["Marble."]
 
 class Location:
     def __init__(self, seed):
@@ -12,3 +12,6 @@ class Location:
                 random.choice(location_types)
         )
         self.enemy = enemy.get()
+        self.cultist = cultist.get()
+        self.marblecolossus = marblecolossus.get()
+        self.voidentity = voidentity.get()
