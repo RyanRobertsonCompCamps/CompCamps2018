@@ -1,14 +1,14 @@
 import random
 
 def get():
-    if random.randint(1, 2) == 1:
+    if random.randint(1, 50) == 1:
         return Cultist()
     else:
         return None
 class Cultist:
     def __init__(self):
-            self.health = 1
-            self.damage = random.randint(1, 45)
+            self.health = 150
+            self.damage = random.randint(1, 35)
 
     def isAlive(self):
         return self.health > 0

@@ -15,14 +15,14 @@ Item("Black Dart", 3, -2, True),#COMMON
 Item("Syringe", 2, 5, True),#COMMON
 Item("Sword of the Fallen Golem", 7, 0),#UNCOMMON
 Item("Carved Golem Remains", 5, 0),#COMMON
-Item("Staff of Unholy Sacrifice", 10, 30),#UNCOMMON
+Item("Staff of Unholy Sacrifice", 10, 30),#RARE
 Item("Wand of the Fallen Cultist", 5, 20),#RARE
 Item("Sword of the Fallen Warrior", 8, 0),#UNCOMMON
 Item("Waki of the Ancient Samurai", 6, 0),#COMMON
 Item("Dagger of the Titan", 7, 0),#COMMON
 Item("Marble Shield", 4, 0),#COMMON
 Item("Void Bow", 50, 10),#RARE
-Item("Vial of Pure Darkness", 0, 150, True)#RARE
+Item("Vial of Pure Darkness", 0, 150, True),#RARE
 Item("Sword of the Colossus", 80, -15)#LEGENDARY
 ]
 def getRandomItem():
