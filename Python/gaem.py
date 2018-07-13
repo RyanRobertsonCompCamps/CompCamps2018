@@ -256,7 +256,7 @@ while running and user.isAlive():
     elif command == "fight missingno":
         random.seed(datetime.now())
 
-        while tile.marblecolossus.isAlive() and user.isAlive():
+        while tile.missingno.isAlive() and user.isAlive():
             print("You have {} health.".format(user.health))
             print("The Marble Colossus has {} health.".format(tile.missingno.health))
             command = input("! > ")
@@ -279,9 +279,9 @@ while running and user.isAlive():
                     tile.missingno.health -= item.getItem(i).damage
                 else:
                     print("You dont have {}!".format(i))
-            if tile.marblecolossus.isAlive():
+            if tile.missingno.isAlive():
                 user.health -= tile.missingno.damage
-            elif tile.marblecolossus.isDead():
+            elif tile.missingno.isDead():
                 print("The drop was a lie. Kill other things for fantastic rewards!")
 
     elif command.startswith("use"):
