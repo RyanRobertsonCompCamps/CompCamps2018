@@ -1,4 +1,4 @@
-import random, enemy, cultist, marblecolossus, voidentity
+import random, enemy, cultist, marblecolossus, voidentity, missingno
 
 descriptions = ["a Room of"]
 location_types = ["Marble."]
@@ -15,3 +15,4 @@ class Location:
         self.cultist = cultist.get()
         self.marblecolossus = marblecolossus.get()
         self.voidentity = voidentity.get()
+        self.missingno = missingno.get()

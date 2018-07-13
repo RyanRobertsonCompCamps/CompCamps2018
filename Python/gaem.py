@@ -61,7 +61,7 @@ while running and user.isAlive():
         print("Hello {}, I have missed you. Now, YOU ARE ESSENCE TO MY ARMY OF SHADOW!")
         print("NEW QUEST: Defeat the void entity!")
         print("type 'fight void entity' to begin the fight.")
-    if tile.missingno and tile.missingno isAlive():
+    if tile.missingno and tile.missingno.isAlive():
         print("You found the MissigNo. Kill it for fantastic rewards!")
     command = input("> ")
     if command == "items":
@@ -258,7 +258,7 @@ while running and user.isAlive():
 
         while tile.missingno.isAlive() and user.isAlive():
             print("You have {} health.".format(user.health))
-            print("The Marble Colossus has {} health.".format(tile.missingno.health))
+            print("The Missingno has {} health.".format(tile.missingno.health))
             command = input("! > ")
             if command == "punch":
                 if random.randint(1,5) < 5:
