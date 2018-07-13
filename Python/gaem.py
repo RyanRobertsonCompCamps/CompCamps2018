@@ -1,7 +1,7 @@
     #LOST HALLS GAME!
 
 
-import location, player, item, random, enemy, cultist, marblecolossus, voidentity
+import location, player, item, random, enemy, cultist, marblecolossus, voidentity, missingno
 from datetime import datetime
 print("As you enter the halls, you find a letter.")
 print("DAY 1 LOG: As we travelled across the ocean to go to these halls, it looks kind of... empty. The walls, floor, and ceiling are all marble.")
@@ -58,9 +58,11 @@ while running and user.isAlive():
         print("NEW QUEST: Defeat the Marble Colossus")
         print("Type 'fight colossus' to start the battle.")
     if tile.voidentity and tile.voidentity.isAlive():
-        print("Welcome, I know you so well. Remember me? You probably don't. Also, you will never live to tell this tale!")
+        print("Hello {}, I have missed you. Now, YOU ARE ESSENCE TO MY ARMY OF SHADOW!")
         print("NEW QUEST: Defeat the void entity!")
         print("type 'fight void entity' to begin the fight.")
+    if tile.missingno and tile.missingno isAlive():
+        print("You found the MissigNo. Kill it for fantastic rewards!")
     command = input("> ")
     if command == "items":
         if user.inventory:
@@ -239,6 +241,7 @@ while running and user.isAlive():
                     print("You used a {}.".format(i))
                     user.use(i)
                     tile.voidentity.health -= item.getItem(i).damage
+                    print("AH! MINIONS! I WILL FEED YOU!")
                 else:
                     print("You dont have {}!".format(i))
             if tile.voidentity.isAlive():
@@ -250,6 +253,36 @@ while running and user.isAlive():
                 print("I am the embodiment of your own sin! To destroy me would be to destroy yourselves!")
                 print("Naivety! You really think you have won? The inevitable has merely been delayed. One day you shall all be slain, and on that day I will claim your souls in vengeance.")
 
+    elif command == "fight missingno":
+        random.seed(datetime.now())
+
+        while tile.marblecolossus.isAlive() and user.isAlive():
+            print("You have {} health.".format(user.health))
+            print("The Marble Colossus has {} health.".format(tile.missingno.health))
+            command = input("! > ")
+            if command == "punch":
+                if random.randint(1,5) < 5:
+                    tile.missingno.health -= random.randint(1, 5)
+                else:
+                    print("You missed your punch!")
+            elif command == "slam":
+                if random.randint(1,3) == 1:
+                    print("!")
+                    tile.missingno.health -= 10
+                else:
+                    print("You missed the slam and took damage from hitting the floor!")
+            elif command.startswith("use"):
+                _, i = command.split(" ", 1)
+                if user.hasItem(i):
+                    print("You used a {}".format(i))
+                    user.use(i)
+                    tile.missingno.health -= item.getItem(i).damage
+                else:
+                    print("You dont have {}!".format(i))
+            if tile.marblecolossus.isAlive():
+                user.health -= tile.missingno.damage
+            elif tile.marblecolossus.isDead():
+                print("The drop was a lie. Kill other things for fantastic rewards!")
 
     elif command.startswith("use"):
         _, i = command.split(" ", 1)
